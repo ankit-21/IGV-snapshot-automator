@@ -28,11 +28,11 @@ import os
 import errno
 import subprocess as sp
 import argparse
-import glob
-import shutil
-from PIL import Image
-from PIL import ImageDraw
-import PyPDF2 
+# import glob
+# import shutil
+# from PIL import Image
+# from PIL import ImageDraw
+# import PyPDF2 
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 default_igv_jar = os.path.join(THIS_DIR, 'igv.jar')
