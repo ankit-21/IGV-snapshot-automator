@@ -13,8 +13,8 @@ python \
 make
 
 # add the source code for the repo to the container
-ADD . /IGV-snapshot-automator
-ENV PATH="/IGV-snapshot-automator/:/IGV-snapshot-automator/IGV_2.4.10/:${PATH}"
+ADD . ankit-21/IGV-snapshot-automator
+ENV PATH="/ankit-21/IGV-snapshot-automator/:/IGV-snapshot-automator/IGV_2.4.10/:${PATH}"
 
 # install IGV via the Makefile
 # then make a dummy batch script in order to load the hg19 genome into the container
