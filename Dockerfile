@@ -1,8 +1,6 @@
 # Docker container with the dependencies needed to run the IGV snapshot automator
 FROM ubuntu:16.04
 
-MAINTAINER Stephen M. Kelly
-
 RUN apt-get update && \
 apt-get install -y wget \
 unzip \
