@@ -348,45 +348,45 @@ def run():
          group_by_strand=group_by_strand)
     
 
-    def png_to_pdf():
-    input_file = "TOC_Sample.pdf"
-    output_file = "example-drafted_new.pdf"
-    watermark_file = "Snapshot_PDF.pdf"
-    imagelist = glob.glob('snapshots/*.png')
-    images = []
+#     def png_to_pdf():
+#     input_file = "TOC_Sample.pdf"
+#     output_file = "example-drafted_new.pdf"
+#     watermark_file = "Snapshot_PDF.pdf"
+#     imagelist = glob.glob('snapshots/*.png')
+#     images = []
 
-    # reading and opening all the images and saving it in the images list
-    for i in imagelist:
-        img = Image.open(i)
-        img = img.convert('RGB')
-        images.append(img)
+#     # reading and opening all the images and saving it in the images list
+#     for i in imagelist:
+#         img = Image.open(i)
+#         img = img.convert('RGB')
+#         images.append(img)
 
-    # converting all the images in the images list into pdf
-    images[0].save(r'Snapshot_PDF.pdf', save_all=True, append_images=images[1:])
-#     shutil.rmtree('snapshots')
+#     # converting all the images in the images list into pdf
+#     images[0].save(r'Snapshot_PDF.pdf', save_all=True, append_images=images[1:])
+# #     shutil.rmtree('snapshots')
 
-# open the table of contents, watermark and final output file
-    with open(input_file, "rb") as filehandle_input, open(watermark_file, "rb") as filehandle_watermark, open(output_file, "wb") as filehandle_output:
-        pdf = PyPDF2.PdfFileReader(filehandle_input)
-        watermark = PyPDF2.PdfFileReader(filehandle_watermark)
+# # open the table of contents, watermark and final output file
+#     with open(input_file, "rb") as filehandle_input, open(watermark_file, "rb") as filehandle_watermark, open(output_file, "wb") as filehandle_output:
+#         pdf = PyPDF2.PdfFileReader(filehandle_input)
+#         watermark = PyPDF2.PdfFileReader(filehandle_watermark)
         
-# adding the first table of content page
-        first_page = pdf.getPage(0)
-        pdf_writer = PyPDF2.PdfFileWriter()
-        pdf_writer.addPage(first_page)
+# # adding the first table of content page
+#         first_page = pdf.getPage(0)
+#         pdf_writer = PyPDF2.PdfFileWriter()
+#         pdf_writer.addPage(first_page)
         
-# looping through all the pages in the pdf containing images and pasting it on a new pdf with contents of table of content on it too
-        for i in range(min(watermark.numPages, pdf.numPages)):
-            # start from the second page of the original PDF
-            page = pdf.getPage(i+1)
-            # start from the first page of the watermark PDF (PDF containing images)
-            page_watermark = watermark.getPage(i)
-            page_watermark.scaleTo(width=620,height=700)
-            page.mergePage(page_watermark)
-            pdf_writer.addPage(page)
-            pdf_writer.write(filehandle_output)
+# # looping through all the pages in the pdf containing images and pasting it on a new pdf with contents of table of content on it too
+#         for i in range(min(watermark.numPages, pdf.numPages)):
+#             # start from the second page of the original PDF
+#             page = pdf.getPage(i+1)
+#             # start from the first page of the watermark PDF (PDF containing images)
+#             page_watermark = watermark.getPage(i)
+#             page_watermark.scaleTo(width=620,height=700)
+#             page.mergePage(page_watermark)
+#             pdf_writer.addPage(page)
+#             pdf_writer.write(filehandle_output)
 
 if __name__ == "__main__":
     run()
-    print('Converting to PDF...')
-    png_to_pdf()
+#     print('Converting to PDF...')
+#     png_to_pdf()
